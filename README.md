@@ -23,6 +23,16 @@ Things you may want to cover:
 
 * ...
 
+<!-- ## comments 
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| comment_id   | integer    | primary_key                    |
+| post_id      | references | null: false, foreign_key: true |
+| commenter_id | references | null: false, foreign_key: true |
+| comment_text | text       | null: false                    |
+| comment_time | datetime   | null: false                    | -->
+
+
 # テーブル設計
 
 ## users テーブル
@@ -34,44 +44,85 @@ Things you may want to cover:
 | encrypted_password | string  | null: false |
 | bike model         | string  | null: false |
 | self_introduction  | text    |             |
-| user_id            | integer | primary_key |
+### Association
+has_many :user_rooms
+has_many :rooms, through: :user_rooms
+has_many :messages
+has_many :user_follows
+has_many :follower_relationships, class_name: "Follow", foreign_key: "following_id", dependent: :destroy
+has_many :followers, through: :follower_relationships, source: :follower
+has_many :following_relationships, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
+has_many :followings, through: :following_relationships, source: :following
+<!-- 中間テーブル -->
+## user_rooms テーブル
+| Column          | Type       | Options                        |
+| --------------- | -----------| ------------------------------ |
+|user_id          |	references |	null: false, foreign_key: true|
+|room_id	        | references | 	null: false, foreign_key: true|
+### Association
+  belongs_to :user
+  belongs_to :room
 
-## chat_rooms テーブル
+## rooms テーブル
 
 | Column          | Type       | Options                        |
 | --------------- | -----------| ------------------------------ |
 | chatroom_name   | string     | null: false                    |
 | creator_id      | references | null: false, foreign_key: true |
-| chatroom_id     | integer    | primary_key                    |
+| room_id         | integer    | primary_key                    |
+### Association
+has_many :user_rooms, dependent: :destroy
+has_many :users, through: :user_rooms
+has_many :messages, dependent: :destroy
+has_many :room_searches, dependent: :destroy
+has_many :searches, through: :room_searches
 
-
-##  chat_messages テーブル
-
+##  messages テーブル
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | message_id   | string     | primary_key                    |
-| chatroom_id  | references | null: false, foreign_key: true |
+| room_id 　　　| references | null: false, foreign_key: true |
 | sender_id    | references | null: false, foreign_key: true |
 | message_text | text       | null: false
+### Association
+belongs_to :room
+belongs_to :user
 
-## comments 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| comment_id   | integer    | primary_key                    |
-| post_id      | references | null: false, foreign_key: true |
-| commenter_id | references | null: false, foreign_key: true |
-| comment_text | text       | null: false                    |
-| comment_time | datetime   | null: false                    |
-
-## follows table
+## follows テーブル
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-|follow_id    | integer    | primary_key                    |
+|user_id      | integer    | primary_key                    |
 |follower_id  | references | null: false, foreign_key: true |
 |following_id | references | null: false, foreign_key: true |
+### Association
+belongs_to :follower, class_name: "User"
+belongs_to :following, class_name: "User"
+<!-- 中間テーブル -->
 
-## Searches table
+## user_follows　テーブル
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+|follower_id  | references | null: false, foreign_key: true |
+|following_id | references | null: false, foreign_key: true |
+### Association
+
+
+## Searches テーブル
 | Column         | Type   　| Options     |
 | -------------- | -------- | ----------- |
 | search_id      | integer　| primary_key |
 | search_keyword | string　 | null: false |
+### Association
+has_many :room_searches, dependent: :destroy
+has_many :rooms, through: :room_searches
+<!-- 中間テーブル -->
+## Room_searches テーブル
+
+| Column         | Type     　| Options                        |
+| -------------- | --------   | ------------------------------ |
+| search_id      | references | null: false, foreign_key: true |
+|   room_id 　　　| references | null: false, foreign_key: true |
+
+### Association
+belongs_to :room
+belongs_to :search
