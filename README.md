@@ -42,7 +42,7 @@ Things you may want to cover:
 | name               | string  | null: false |
 | email              | string  | null: false |
 | encrypted_password | string  | null: false |
-| bike model         | string  | null: false |
+| bike_model         | string  | null: false |
 | self_introduction  | text    |             |
 ### Association
 has_many :user_rooms
