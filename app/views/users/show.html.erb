@@ -1,0 +1,22 @@
+<head>
+  <title><%= @user.name %></title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'profile', media: 'all' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<div class="user-profile">
+  <h2><%= @user.name %>のプロフィール</h2>
+  <p>メールアドレス: <%= @user.email %></p>
+  <p>バイクのモデル: <%= @user.motorcycle_model %></p>
+  <p>自己紹介: <%= @user.introduction %></p>
+
+  <% if current_user != @user %>
+    <% if current_user.following?(@user) %>
+      <%= button_to "フォロー中", unfollow_user_path(@user), method: :post %>
+    <% else %>
+      <%= button_to "フォローする", follow_user_path(@user), method: :post %>
+    <% end %>
+  <% else %>
+    <%= link_to "編集", edit_user_path(@user) %>
+  <% end %>
+</div>
