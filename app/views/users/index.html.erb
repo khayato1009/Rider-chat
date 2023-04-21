@@ -6,12 +6,12 @@
   <link rel="stylesheets" href="style.css">
 </head>
 <body>
-	<header>
+	<header id="myHeader">
 		<h1>Rider chat</h1>
 		<div class='list'>
 			<ul class="button-list">
 				<li><%= link_to 'ログイン', new_user_session_path %></li>
-				<li><%= link_to '新規登録', '#' %></li>
+				<li><%= link_to '新規登録', new_user_registration_path %></li>
 			</ul>
 		</div>
 	</header>
