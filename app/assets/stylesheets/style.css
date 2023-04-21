@@ -1,11 +1,13 @@
-header{
+#myHeader{
   height:100px;
   width: 100%;
-  background-color: orange;
+  background-color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 px;
+  padding: 20px;
+  color: white;
+  font-size: 30px;
 }
 .list {
   display: flex;
@@ -33,12 +35,21 @@ header{
   align-items: center;
   height: 100%;
   margin: 0;
-  padding-right: px;
+  padding-right: 40px;
+}
+.button-list li {
+list-style: none;
+
 }
 
-.button-list li {
+.button-list li a { 
   list-style: none;
   margin-right: 10px;
+  text-decoration: none;
+  color: white;
+  border: 2px solid white;
+  padding: 10px 20px;
+
 }
 
 .button-list li:last-child {
@@ -48,11 +59,10 @@ header{
 footer {
   text-align: center;
   bottom: 0;
-
   line-height: 50px;
 }
  /* リセットCSS */
-body {
+/* body {
   font-size: 14px;
   color: #333;
   margin: 0 auto;
@@ -65,4 +75,4 @@ h1,h2,h3,h4,h5,h6,p {
 ul,li {
   padding: 0;
   margin: 0;
-}
+} */
