@@ -10,7 +10,7 @@
 			<h1>Rider chat</h1>
      <% if user_signed_in? %>
 			 <ul class="button-list">
-				<li><%= link_to 'チャットを始める', '#' %></li>
+				<li><%= link_to 'チャットを始める', new_room_path %></li>
 				<li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
 			 </ul>
 		 <% else %> 
