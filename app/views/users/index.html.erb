@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-	<title>Rider chat</title>
-  <link rel="stylesheets" href="style.css">
-</head>
-<body>
-	<header id="myHeader">
-		<h1>Rider chat</h1>
-		<div class='list'>
-			<ul class="button-list">
-				<li><%= link_to 'ログイン', new_user_session_path %></li>
-				<li><%= link_to '新規登録', new_user_registration_path %></li>
-			</ul>
-		</div>
-	</header>
-	<div class="bg-image"></div>
-	<footer>
-		<p>Copyright © 2023 riderchat</p>
-	</footer>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Rider chat</title>
+		<link rel="stylesheets" href="style.css">
+	</head>
+	<body>
+		<header id="myHeader">
+			<h1>Rider chat</h1>
+     <% if user_signed_in? %>
+			 <ul class="button-list">
+				<li><%= link_to 'チャットを始める', '#' %></li>
+				<li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+			 </ul>
+		 <% else %> 
+				<ul class="button-list">
+					<li><%= link_to 'ログイン', new_user_session_path %></li>
+					<li><%= link_to '新規登録', new_user_registration_path %></li>
+				</ul>
+     <% end %>
+			</div>
+		</header>
+		<div class="bg-image"></div>
+		<footer>
+			<p>Copyright © 2023 riderchat</p>
+		</footer>
+	</body>
 </html>
