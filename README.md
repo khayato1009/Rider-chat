@@ -81,7 +81,7 @@ has_many :searches, through: :room_searches
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
 | message_id   | string     | primary_key                    |
-| room_id 　　　| references | null: false, foreign_key: true |
+| room_id      | references | null: false, foreign_key: true |
 | sender_id    | references | null: false, foreign_key: true |
 | message_text | text       | null: false
 ### Association
