@@ -42,7 +42,7 @@ Things you may want to cover:
 | name               | string  | null: false |
 | email              | string  | null: false |
 | encrypted_password | string  | null: false |
-| bike_model         | string  | null: false |
+| motorcycle_model   | string  | null: false |
 | self_introduction  | text    |             |
 ### Association
 has_many :user_rooms
@@ -67,7 +67,7 @@ has_many :followings, through: :following_relationships, source: :following
 
 | Column          | Type       | Options                        |
 | --------------- | -----------| ------------------------------ |
-| chatroom_name   | string     | null: false                    |
+| name            | string     | null: false                    |
 | creator_id      | references | null: false, foreign_key: true |
 | room_id         | integer    | primary_key                    |
 ### Association
