@@ -1,90 +1,66 @@
-.chat-room-container {
+.chat-room-form {
+  max-width: 500px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-}
-
-.chat-room-header {
-  display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: #eee;
-  padding: 20px;
-  border-bottom: 1px solid #ccc;
-}
-
-.chat-room-header h1 {
-  font-size: 24px;
-  margin: 0;
-}
-
-.chat-room-members {
+  height: 100vh;
+  padding-bottom: 80px;
+  }
+  
+  .chat-room-form h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: black;
+  }
+  
+  .chat-room-form__field {
   display: flex;
-}
-
-.chat-room-member {
-  background-color: #ddd;
-  border-radius: 10px;
-  padding: 5px 10px;
-  margin-right: 10px;
-}
-
-.chat-room-messages {
-  flex-grow: 1;
-  overflow-y: scroll;
-  padding: 20px;
-}
-
-.chat-room-message {
-  margin-bottom: 10px;
-}
-
-.message-sender {
-  font-weight: bold;
-  margin-right: 10px;
-}
-
-.message-content {
-  background-color: #f5f5f5;
-  border-radius: 5px;
-  padding: 10px;
+  margin-bottom: 20px;
+  }
+  
+  .chat-room-form__field--left {
+  flex-basis: 30%;
+  margin-right: 20px;
+  text-align: right;
+  }
+  
+  .chat-room-form__label {
   display: inline-block;
-}
-
-.message-timestamp {
-  font-size: 12px;
-  color: #888;
-  margin-left: 10px;
-}
-
-.chat-room-form {
-  padding: 20px;
-  border-top: 1px solid #ccc;
-}
-
-.form-group {
-  margin-bottom: 10px;
-}
-
-.form-control {
-  border: none;
-  background-color: #f5f5f5;
-  border-radius: 5px;
-  padding: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+  white-space: nowrap;
+  }
+  
+  .chat-room-form__field--right {
+  flex-basis: 70%;
+  }
+  
+  .chat__room_name {
   width: 100%;
-  resize: none;
-}
-
-.btn-primary {
-  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  white-space: nowrap;
+ 
+  }
+  
+  .chat-room-form__action-btn {
   background-color: #007bff;
   color: #fff;
-  padding: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
   border-radius: 5px;
+  border: none;
   cursor: pointer;
-  margin-top: 10px;
-}
-
-.btn-primary:hover {
-  background-color: #0069d9;
-}
+  }
+  
+  body {
+  background-image: url("sample.jpg");
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  }

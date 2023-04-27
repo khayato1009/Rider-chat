@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "users#index"
   
+  resources :rooms, only: [:new, :create, :show]
 end
 
