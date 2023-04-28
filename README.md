@@ -80,10 +80,9 @@ has_many :searches, through: :room_searches
 ##  messages テーブル
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| message_id   | string     | primary_key                    |
-| room_id      | references | null: false, foreign_key: true |
-| sender_id    | references | null: false, foreign_key: true |
-| message_text | text       | null: false
+| content      | string     | primary_key                    |
+| room         | references | null: false, foreign_key: true |
+| user         | references | null: false, foreign_key: true |
 ### Association
 belongs_to :room
 belongs_to :user

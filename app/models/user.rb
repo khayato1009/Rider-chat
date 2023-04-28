@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :motorcycle_model ,presence: true   
 has_many :user_rooms
 has_many :rooms, through: :user_rooms
+has_many :messages
 end
